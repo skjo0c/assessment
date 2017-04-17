@@ -11,4 +11,10 @@ package assessment;
  */
 public class Student {
     
+   public Student(String sname, String syear){
+       StudyMonitorInterface values = new StudyMonitorInterface();
+       
+       sname = values.name.getText();
+       syear = values.year.getText();
+   } 
 }
