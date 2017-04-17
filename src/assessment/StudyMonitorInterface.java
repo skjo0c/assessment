@@ -6,6 +6,8 @@
 package assessment;
 
 import com.sun.xml.internal.txw2.Document;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -18,7 +20,8 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
      * Creates new form StudyMonitorInterface
      */
     public StudyMonitorInterface() {
-        initComponents();
+        initComponents();   // calling initComponent containing JFrame objects
+        setVisible(true);   // making the JFrame shown
     }
 
     /**
@@ -50,8 +53,8 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
         assessment = new javax.swing.JButton();
         setgrade = new javax.swing.JButton();
         dispgrade = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,11 +65,6 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameActionPerformed(evt);
-            }
-        });
-        name.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nameKeyTyped(evt);
             }
         });
 
@@ -129,17 +127,17 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
 
         dispgrade.setText("Display Grade");
 
-        jButton6.setText("Clear Display");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        clear.setText("Clear Display");
+        clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                clearActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Exit");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
 
@@ -193,9 +191,9 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dispgrade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
+                        .addComponent(clear)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(exit)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,10 +226,33 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
                     .addComponent(assessment)
                     .addComponent(setgrade)
                     .addComponent(dispgrade)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(clear)
+                    .addComponent(exit))
                 .addGap(29, 29, 29))
         );
+
+        //code for enabling the CreateStudent button if there's some key in both field
+        name.addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) { //watch for key strokes
+                if(name.getText().length() == 0 || year.getText().length() == 0)
+                create.setEnabled(false);   //disbale button if nothing is there
+                else
+                {
+                    create.setEnabled(true);    //enable button if something is there
+                }
+            }
+        });
+        //code for enabling the CreateStudent button if there's some key in both field
+        year.addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) { //watch for key strokes
+                if(name.getText().length() == 0 || year.getText().length() == 0)
+                create.setEnabled(false);   //disbale button if nothing is there
+                else
+                {
+                    create.setEnabled(true);    //enable button if something is there
+                }
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,15 +271,9 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
    
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
-        System.out.println(name.getText());
-        if(name.getText().equals("")){
-            create.setEnabled(false);
-        }
-        else{
-            create.setEnabled(true);
-        }
     }//GEN-LAST:event_nameActionPerformed
 
+    
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearActionPerformed
@@ -275,75 +290,41 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_achivementsActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-        name.setText("");
-        year.setText("");
-        subjects.setSelectedIndex(0);
-        assessments.setSelectedIndex(0);
-        achivements.setSelectedIndex(0);
-        txtarea.setText("");
-    }//GEN-LAST:event_jButton6ActionPerformed
+        name.setText("");       // Sets the Student Name as blank
+        year.setText("");       // Sets the Year Level as blank
+        subjects.setSelectedIndex(0);       //Sets the Dropdown to original state
+        assessments.setSelectedIndex(0);    //Sets the Dropdown to original state
+        achivements.setSelectedIndex(0);    //Sets the Dropdown to original state
+        txtarea.setText("");    // Sets the Student Performance textarea blank
+    }//GEN-LAST:event_clearActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton7ActionPerformed
+        System.exit(0);     // Closes the program
+    }//GEN-LAST:event_exitActionPerformed
     
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
-        load.setEnabled(true);
+        load.setEnabled(true);  //Enables the Load Assessment button after the Create Student button is clicked
     }//GEN-LAST:event_createActionPerformed
-
-    private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
-        // TODO add your handling code here:
-        create.setEnabled(true);
-
-    }//GEN-LAST:event_nameKeyTyped
-
+   
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudyMonitorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudyMonitorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudyMonitorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudyMonitorInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StudyMonitorInterface().setVisible(true);
-            }
-        });
+        new StudyMonitorInterface();    //Call for the constructor
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox achivements;
     private javax.swing.JButton assessment;
     private javax.swing.JComboBox assessments;
+    private javax.swing.JButton clear;
     private javax.swing.JButton create;
     private javax.swing.JButton dispgrade;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -354,10 +335,10 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton load;
-    private javax.swing.JTextField name;
+    public javax.swing.JTextField name;
     private javax.swing.JButton setgrade;
     private javax.swing.JComboBox subjects;
     private javax.swing.JTextArea txtarea;
-    private javax.swing.JTextField year;
+    public javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
 }
