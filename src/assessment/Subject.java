@@ -5,13 +5,19 @@
  */
 package assessment;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author WhiteshadoW
  */
 public class Subject {
     
-    public Subject(String subjs, String [] assessments){
+    public Subject(String subjs, String [] assessments) throws FileNotFoundException, IOException{
         
     }
+    
 }

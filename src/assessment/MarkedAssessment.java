@@ -5,13 +5,13 @@
  */
 package assessment;
 
+import com.sun.media.jfxmedia.events.MarkerEvent;
+
 /**
  *
  * @author WhiteshadoW
  */
-public class MarkedAssessment extends Assessment{
-
-    public MarkedAssessment(int AssessmentID, String AsssessmentType, String topic, String format, String dueDate, boolean graded) {
-        super(AssessmentID, AsssessmentType, topic, format, dueDate, graded);
+public class MarkedAssessment{
+    public MarkedAssessment(){
     }
 }
