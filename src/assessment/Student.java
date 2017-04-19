@@ -15,23 +15,18 @@ import javax.swing.DefaultComboBoxModel;
  * @author WhiteshadoW
  */
 public class Student {
-    static ComboBoxModel getSubjectList;
+    private String stname;
+    private String styear;
     
-   public Student(String sname, String syear){
+   public Student(String name, String year, String createsub){
        StudyMonitorInterface values = new StudyMonitorInterface();
        
-       sname = values.name.getText();
-       syear = values.year.getText();
-    }
-   public ArrayList getSubjectList(){
+       this.stname = name;
+       this.styear = year;
+       
        ArrayList subjs = new ArrayList();
-       subjs.add("English");
-       subjs.add("Mathematics B");
-       subjs.add("Biology");
-       subjs.add("Businness and Communication Technologies");
-       subjs.add("Religion and Ethics");
-       return subjs;
-   }
+       subjs.add(createsub);
+    }
    
 }
    

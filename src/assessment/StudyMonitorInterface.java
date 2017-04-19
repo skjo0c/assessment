@@ -8,6 +8,8 @@ package assessment;
 import com.sun.xml.internal.txw2.Document;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javafx.scene.control.ComboBox;
 import javax.swing.DefaultComboBoxModel;
 /**
  *
@@ -19,9 +21,13 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
     /**
      * Creates new form StudyMonitorInterface
      */
+
+    
     public StudyMonitorInterface() {
         initComponents();   // calling initComponent containing JFrame objects
         setVisible(true);   // making the JFrame shown
+        
+           //arraylist to array
     }
 
     /**
@@ -55,6 +61,7 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
         dispgrade = new javax.swing.JButton();
         clear = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +85,7 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
 
         jLabel4.setText("Subjects");
 
-        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Mathematics", "abc" }));
+        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Subject", "English", "Mathematics B", "Biology", "Business and Communication Technologies", "Religion and Ethics" }));
         subjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectsActionPerformed(evt);
@@ -146,12 +153,14 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Command Buttons");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,19 +195,22 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
                                 .addComponent(jLabel7))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(create)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(load)
-                        .addGap(18, 18, 18)
-                        .addComponent(assessment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(setgrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dispgrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(clear)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exit)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(create)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(load)
+                                .addGap(14, 14, 14)
+                                .addComponent(assessment)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(setgrade)
+                                .addGap(10, 10, 10)
+                                .addComponent(dispgrade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(clear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(exit)))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -224,7 +236,9 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(create)
                     .addComponent(load)
@@ -233,7 +247,7 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
                     .addComponent(dispgrade)
                     .addComponent(clear)
                     .addComponent(exit))
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         //code for enabling the CreateStudent button if there's some key in both field
@@ -314,8 +328,11 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
     
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
+        new Student(name.getText(), year.getText(), (String)subjects.getSelectedItem());
         txtarea.setText("Student added to the System. You can now load Assessments using Load Assessment Button");
         load.setEnabled(true);  //Enables the Load Assessment button after the Create Student button is clicked
+        
+        
     }//GEN-LAST:event_createActionPerformed
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
@@ -345,12 +362,13 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton load;
     public javax.swing.JTextField name;
     private javax.swing.JButton setgrade;
-    private javax.swing.JComboBox subjects;
+    public javax.swing.JComboBox subjects;
     private javax.swing.JTextArea txtarea;
     public javax.swing.JTextField year;
     // End of variables declaration//GEN-END:variables
