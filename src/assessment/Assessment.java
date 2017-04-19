@@ -11,4 +11,14 @@ package assessment;
  */
 public class Assessment {
     
+        public int AssessmentID;
+        public String AsssessmentType;
+        public String topic;
+        public String format;
+        public String dueDate;
+        public boolean graded;
+        
+        public Assessment(int AssessmentID, String AsssessmentType, String topic, String format, String dueDate,  boolean graded){
+            
+        }
 }

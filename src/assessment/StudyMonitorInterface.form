@@ -183,14 +183,10 @@
         <Component class="javax.swing.JComboBox" name="subjects">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
-                <StringItem index="0" value="Choose Subject"/>
-                <StringItem index="1" value="English"/>
-                <StringItem index="2" value="Mathematics B"/>
-                <StringItem index="3" value="Biology"/>
-                <StringItem index="4" value="Business"/>
-                <StringItem index="5" value="Communication Technologies"/>
-                <StringItem index="6" value="Religion and Ethics"/>
+              <StringArray count="3">
+                <StringItem index="0" value="English"/>
+                <StringItem index="1" value="Mathematics"/>
+                <StringItem index="2" value="abc"/>
               </StringArray>
             </Property>
           </Properties>
@@ -272,6 +268,9 @@
             <Property name="text" type="java.lang.String" value="Load Assessment"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="assessment">
           <Properties>

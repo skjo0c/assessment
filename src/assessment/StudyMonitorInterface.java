@@ -8,7 +8,7 @@ package assessment;
 import com.sun.xml.internal.txw2.Document;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import javax.swing.DefaultComboBoxModel;
 /**
  *
  * @author WhiteshadoW
@@ -78,7 +78,7 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
 
         jLabel4.setText("Subjects");
 
-        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Subject", "English", "Mathematics B", "Biology", "Business", "Communication Technologies", "Religion and Ethics" }));
+        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Mathematics", "abc" }));
         subjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectsActionPerformed(evt);
@@ -120,6 +120,11 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
 
         load.setText("Load Assessment");
         load.setEnabled(false);
+        load.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadActionPerformed(evt);
+            }
+        });
 
         assessment.setText("Display Assessment");
 
@@ -280,6 +285,8 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
 
     private void subjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectsActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_subjectsActionPerformed
 
     private void assessmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentsActionPerformed
@@ -307,8 +314,14 @@ public class StudyMonitorInterface extends javax.swing.JFrame {
     
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
+        txtarea.setText("Student added to the System. You can now load Assessments using Load Assessment Button");
         load.setEnabled(true);  //Enables the Load Assessment button after the Create Student button is clicked
     }//GEN-LAST:event_createActionPerformed
+
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_loadActionPerformed
    
     /**
      * @param args the command line arguments

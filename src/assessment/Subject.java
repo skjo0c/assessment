@@ -11,4 +11,7 @@ package assessment;
  */
 public class Subject {
     
+    public Subject(String subjs, String [] assessments){
+        
+    }
 }

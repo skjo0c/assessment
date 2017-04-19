@@ -9,6 +9,9 @@ package assessment;
  *
  * @author WhiteshadoW
  */
-public class MarkedAssessment {
-    
+public class MarkedAssessment extends Assessment{
+
+    public MarkedAssessment(int AssessmentID, String AsssessmentType, String topic, String format, String dueDate, boolean graded) {
+        super(AssessmentID, AsssessmentType, topic, format, dueDate, graded);
+    }
 }
