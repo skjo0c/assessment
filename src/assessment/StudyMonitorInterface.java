@@ -78,7 +78,7 @@ String [] populateAssess = null;
 
         jLabel4.setText("Subjects");
 
-        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Mathematics", "abc" }));
+        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Mathematics B", "Biology", "Business and Communication Technologies", "Religion and Ethics" }));
         subjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectsActionPerformed(evt);
@@ -314,9 +314,9 @@ String [] populateAssess = null;
     
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
-        new Student(name.getText(), year.getText(), (String)subjects.getSelectedItem());
         txtarea.setText("Student added to the System. You can now load Assessments using Load Assessment Button");
         load.setEnabled(true);  //Enables the Load Assessment button after the Create Student button is clicked
+        new Student(name.getText(), year.getText(), (String)subjects.getSelectedItem());
     }//GEN-LAST:event_createActionPerformed
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
@@ -331,7 +331,6 @@ String [] populateAssess = null;
         } catch (Exception e) {
             System.out.println(e);
         }
-        
     }//GEN-LAST:event_loadActionPerformed
    
     /**

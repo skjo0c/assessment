@@ -5,13 +5,13 @@
  */
 package assessment;
 
-import com.sun.media.jfxmedia.events.MarkerEvent;
-
 /**
  *
  * @author WhiteshadoW
  */
 public class MarkedAssessment{
-    public MarkedAssessment(){
+
+    public MarkedAssessment() {
+        
     }
 }
