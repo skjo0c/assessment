@@ -157,7 +157,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//code for enabling the CreateStudent button if there&apos;s some key in both field&#xa;name.addKeyListener(new KeyAdapter() {&#xa;        public void keyReleased(KeyEvent e) { //watch for key strokes&#xa;            if(name.getText().length() == 0 || year.getText().length() == 0)&#xa;                create.setEnabled(false);   //disbale button if nothing is there&#xa;            else&#xa;            {&#xa;                create.setEnabled(true);    //enable button if something is there&#xa;            }&#xa;        }&#xa;     });"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//code for enabling the CreateStudent button if there&apos;s some key in both field&#xa;//name.addKeyListener(new KeyAdapter() {&#xa;//        public void keyReleased(KeyEvent e) { //watch for key strokes&#xa;//            if(name.getText().length() == 0 || year.getText().length() == 0)&#xa;//                create.setEnabled(false);   //disbale button if nothing is there&#xa;//            else&#xa;//            {&#xa;//                create.setEnabled(true);    //enable button if something is there&#xa;//            }&#xa;//        }&#xa;//     });"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
@@ -171,7 +171,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yearActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//code for enabling the CreateStudent button if there&apos;s some key in both field&#xa;year.addKeyListener(new KeyAdapter() {&#xa;        public void keyReleased(KeyEvent e) { //watch for key strokes&#xa;            if(name.getText().length() == 0 || year.getText().length() == 0)&#xa;                create.setEnabled(false);   //disbale button if nothing is there&#xa;            else&#xa;            {&#xa;                create.setEnabled(true);    //enable button if something is there&#xa;            }&#xa;        }&#xa;     });"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//code for enabling the CreateStudent button if there&apos;s some key in both field&#xa;//year.addKeyListener(new KeyAdapter() {&#xa;//        public void keyReleased(KeyEvent e) { //watch for key strokes&#xa;//            if(name.getText().length() == 0 || year.getText().length() == 0)&#xa;//                create.setEnabled(false);   //disbale button if nothing is there&#xa;//            else&#xa;//            {&#xa;//                create.setEnabled(true);    //enable button if something is there&#xa;//            }&#xa;//        }&#xa;//     });"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>

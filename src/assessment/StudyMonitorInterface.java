@@ -237,40 +237,40 @@ String [] populateAssess = null;
         );
 
         //code for enabling the CreateStudent button if there's some key in both field
-        name.addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent e) { //watch for key strokes
-                if(name.getText().length() == 0 || year.getText().length() == 0)
-                create.setEnabled(false);   //disbale button if nothing is there
-                else
-                {
-                    create.setEnabled(true);    //enable button if something is there
-                }
-            }
-        });
-        //code for enabling the CreateStudent button if there's some key in both field
-        year.addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent e) { //watch for key strokes
-                if(name.getText().length() == 0 || year.getText().length() == 0)
-                create.setEnabled(false);   //disbale button if nothing is there
-                else
-                {
-                    create.setEnabled(true);    //enable button if something is there
-                }
-            }
-        });
+        //name.addKeyListener(new KeyAdapter() {
+            //        public void keyReleased(KeyEvent e) { //watch for key strokes
+                //            if(name.getText().length() == 0 || year.getText().length() == 0)
+                //                create.setEnabled(false);   //disbale button if nothing is there
+                //            else
+                //            {
+                    //                create.setEnabled(true);    //enable button if something is there
+                    //            }
+                //        }
+            //     });
+    //code for enabling the CreateStudent button if there's some key in both field
+    //year.addKeyListener(new KeyAdapter() {
+        //        public void keyReleased(KeyEvent e) { //watch for key strokes
+            //            if(name.getText().length() == 0 || year.getText().length() == 0)
+            //                create.setEnabled(false);   //disbale button if nothing is there
+            //            else
+            //            {
+                //                create.setEnabled(true);    //enable button if something is there
+                //            }
+            //        }
+        //     });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+getContentPane().setLayout(layout);
+layout.setHorizontalGroup(
+    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    );
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
    
@@ -281,6 +281,12 @@ String [] populateAssess = null;
     
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
         // TODO add your handling code here:
+        if(!name.getText().equals("")&&!year.getText().equals("")){
+        
+            
+            //JOptionPane.showMessageDialog(null,"Object Created");
+            create.setEnabled(true);
+        }
     }//GEN-LAST:event_yearActionPerformed
 
     private void subjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectsActionPerformed
