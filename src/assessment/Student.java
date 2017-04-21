@@ -15,13 +15,11 @@ import javax.swing.DefaultComboBoxModel;
  * @author WhiteshadoW
  */
 public class Student extends StudyMonitorInterface{
-    private String stname;
-    private String styear;
     
    public Student(String name, String year, String createsub){
-       
-       this.stname = name;
-       this.styear = year;
+       StudyMonitorInterface getstudent = new StudyMonitorInterface();
+       name = getstudent.name.getText();
+       year = getstudent.year.getText();
        
        ArrayList subjs = new ArrayList();
        subjs.add(createsub);
