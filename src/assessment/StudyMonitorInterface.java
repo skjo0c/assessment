@@ -435,29 +435,66 @@ layout.setHorizontalGroup(
     private void dispgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispgradeActionPerformed
         // TODO add your handling code here:
         txtarea.setText(""); // Reset the text area, to avoid appending multiples times the same values
-      txtarea.append( (String) subjects.getSelectedItem() );
-      ComboBoxModel model = assessments.getModel();    //need to change value to display grade here
-      int size = model.getSize();
-                for(int i=1;i<size;i++) {
-                    Object element = model.getElementAt(i);
-                    txtarea.append(String.valueOf("\n"+element));
-                }
+        txtarea.append( (String) subjects.getSelectedItem() );
+        txtarea.append((String) assessments.getSelectedItem());
+        txtarea.append("\n");
+        String achive = ((String) achivements.getSelectedItem());
+        if(achive.equals("Very high")){
+            txtarea.append("Achievement: very high \n");
+            txtarea.append("Knowledge: thorough understanding \n");
+            txtarea.append("Skill: uses a high level of skill in both familiar and new situations \n");
+        }
+        if(achive.equals("High")){
+            txtarea.append("Achievement: high \n");
+            txtarea.append("Knowledge: clear understanding \n");
+            txtarea.append("Skill: uses a high level of skill in both familiar and new situations, and is beginning to use skills in new situations \n");
+        }
+        if(achive.equals("Sound")){
+            txtarea.append("Achievement: sound \n");
+            txtarea.append("Knowledge: understanding \n");
+            txtarea.append("Skill: uses a skills familiar to them \n");
+        }
+        if(achive.equals("Developing")){
+            txtarea.append("Achievement: developing \n");
+            txtarea.append("Knowledge: understanding aspects of \n");
+            txtarea.append("Skill: uses varying levels of skill in situations familiar to them \n");
+        }
+        if(achive.equals("Emerging")){
+            txtarea.append("Achievement: emerging \n");
+            txtarea.append("Knowledge: basic understanding \n");
+            txtarea.append("Skill: beginning to use skills in familiar situations \n");
+        }
     }//GEN-LAST:event_dispgradeActionPerformed
 
     private void setgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setgradeActionPerformed
         // TODO add your handling code here:
-        String csv = "data.csv";
         CSVWriter writer;
+        CSVReader reader = null;
+        
+        try{
+            reader = new CSVReader(new FileReader("data.csv"));
+        }catch(Exception e){System.out.println(e);}
+        
+        String [] nextLine;
         try {
-            writer = new CSVWriter(new FileWriter(csv, true));
+        while ((nextLine = reader.readNext()) != null) {
+            String subject, id, type, topic, format, due;
+            subject = nextLine[0];
+            id = nextLine[1];
+            type = nextLine[2];
+            topic = nextLine[3];
+            format = nextLine[4];
+            due = nextLine[5];
             
-            String [] record = "3,David,Feezor,USA,achivements.getSelectedItem".split(",");
-            writer.writeNext(record);
-            writer.close();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
+            //to writing file
+                writer = new CSVWriter(new FileWriter("Graded.csv"));
+                String[] row = new String[]{subject, id, type, topic, format, due, (String) achivements.getSelectedItem()};
+                writer.writeNext(row);
+                writer.close();
         }
+    } catch (IOException ex) {
+        Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
     }//GEN-LAST:event_setgradeActionPerformed
    
