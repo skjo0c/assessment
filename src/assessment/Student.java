@@ -14,12 +14,11 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author WhiteshadoW
  */
-public class Student {
+public class Student extends StudyMonitorInterface{
     private String stname;
     private String styear;
     
    public Student(String name, String year, String createsub){
-       StudyMonitorInterface values = new StudyMonitorInterface();
        
        this.stname = name;
        this.styear = year;

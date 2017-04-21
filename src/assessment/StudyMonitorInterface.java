@@ -5,10 +5,20 @@
  */
 package assessment;
 
+import com.opencsv.CSVReader;
 import com.sun.xml.internal.txw2.Document;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /**
  *
  * @author WhiteshadoW
@@ -16,6 +26,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class StudyMonitorInterface extends javax.swing.JFrame {
 String [] populateAssess = null;
+
     /**
      * Creates new form StudyMonitorInterface
      */
@@ -23,7 +34,10 @@ String [] populateAssess = null;
         initComponents();   // calling initComponent containing JFrame objects
         setVisible(true);   // making the JFrame shown
     }
-
+    
+    public void assessLoader() throws FileNotFoundException, IOException{
+           
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,7 +92,7 @@ String [] populateAssess = null;
 
         jLabel4.setText("Subjects");
 
-        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Mathematics B", "Biology", "Business and Communication Technologies", "Religion and Ethics" }));
+        subjects.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select subject", "English", "Mathematics B", "Biology", "Business and Communication Technologies", "Religion and Ethics" }));
         subjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectsActionPerformed(evt);
@@ -87,7 +101,6 @@ String [] populateAssess = null;
 
         jLabel5.setText("Assessments");
 
-        assessments.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choose Assessment" }));
         assessments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assessmentsActionPerformed(evt);
@@ -127,6 +140,11 @@ String [] populateAssess = null;
         });
 
         assessment.setText("Display Assessment");
+        assessment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assessmentActionPerformed(evt);
+            }
+        });
 
         setgrade.setText("Set Grade");
 
@@ -151,55 +169,54 @@ String [] populateAssess = null;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(subjects, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(assessments, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(achivements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7))))
+                                .addComponent(subjects, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(assessments, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(achivements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(create)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(load)
-                        .addGap(18, 18, 18)
-                        .addComponent(assessment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(setgrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dispgrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(clear)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exit)
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(create)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(load)
+                                .addGap(18, 18, 18)
+                                .addComponent(assessment)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(setgrade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dispgrade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(clear)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(exit)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,14 +234,14 @@ String [] populateAssess = null;
                     .addComponent(jLabel4)
                     .addComponent(subjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(assessments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(achivements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(achivements, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assessments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(create)
                     .addComponent(load)
@@ -291,6 +308,26 @@ layout.setHorizontalGroup(
 
     private void subjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectsActionPerformed
         // TODO add your handling code here:
+        String whatsub = (String)subjects.getSelectedItem();
+        CSVReader reader = null;
+        try {
+            reader = new CSVReader(new FileReader("data.csv"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String [] nextLine;
+        try {
+        while ((nextLine = reader.readNext()) != null) {
+            for(int j = 1; j<nextLine.length; j++){
+                if(whatsub.equals(nextLine[0])){    //gives assessment according to the subject
+                    Object abc = nextLine[j];
+                    assessments.addItem(nextLine[j]);
+                }
+            }  
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_subjectsActionPerformed
@@ -322,14 +359,16 @@ layout.setHorizontalGroup(
         // TODO add your handling code here:
         txtarea.setText("Student added to the System. You can now load Assessments using Load Assessment Button");
         load.setEnabled(true);  //Enables the Load Assessment button after the Create Student button is clicked
-        new Student(name.getText(), year.getText(), (String)subjects.getSelectedItem());
+        Student student = new Student(name.getText(), year.getText(), (String)subjects.getSelectedItem());  //made subject object
     }//GEN-LAST:event_createActionPerformed
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
         // TODO add your handling code here:
         String whatsubj = (String)subjects.getSelectedItem();
+        
         try {
-            Assessment assessObj = new Assessment();
+            
+            Assessment assessObj = new Assessment();    //made object of assessment.java
             String subname = assessObj.Subject;
             if(whatsubj.equals(subname)){
             String [] populateAssess = {assessObj.Subject, assessObj.AssessmentID, assessObj.AsssessmentType, assessObj.topic, assessObj.format, assessObj.dueDate};
@@ -338,6 +377,18 @@ layout.setHorizontalGroup(
             System.out.println(e);
         }
     }//GEN-LAST:event_loadActionPerformed
+
+    private void assessmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assessmentActionPerformed
+        // TODO add your handling code here:
+      txtarea.setText(""); // Reset the text area, to avoid appending multiples times the same values
+      txtarea.append( (String) subjects.getSelectedItem() );
+      ComboBoxModel model = subjects.getModel();    //need to change value to load assessment here
+      int size = model.getSize();
+                for(int i=1;i<size;i++) {
+                    Object element = model.getElementAt(i);
+                    txtarea.append(String.valueOf("\n"+element));
+                }
+    }//GEN-LAST:event_assessmentActionPerformed
    
     /**
      * @param args the command line arguments
