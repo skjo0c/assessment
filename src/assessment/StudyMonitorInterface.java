@@ -324,53 +324,7 @@ layout.setHorizontalGroup(
 
     private void subjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectsActionPerformed
         // TODO add your handling code here:
-        CSVReader reader = null;
-        try {
-            reader = new CSVReader(new FileReader("data.csv"));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String [] nextLine;
-        try {
-        while ((nextLine = reader.readNext()) != null) {    //reads till the end of the file
-            String whatsub = (String)subjects.getSelectedItem();
-            if(whatsub.equals(nextLine[0])){    //checks which subject we want to get assessment of
-                
-                String sub = whatsub;
-                switch(sub){
-                case "English":
-                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
-                    break;
-                case "Maths B":
-                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
-                    break;
-                case "Religion and Ethics":
-                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);   
-                    break;
-                case "Biology":
-                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
-                    break;
-                case "Business and Communication Technologies":
-                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
-                    break;
-                default:
-                    System.out.println("nothing found");
-                    break;
-                }
-            }
-            
-//            else if(whatsub.equals(nextLine[6])){    //gives assessment according to the subject
-//                assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
-//            }
-//                
-//                    Object abc = nextLine[j];
-//                        
-//                }
-//            }  
-        }
-        } catch (IOException ex) {
-            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
         
         
     }//GEN-LAST:event_subjectsActionPerformed
@@ -406,17 +360,56 @@ layout.setHorizontalGroup(
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
         // TODO add your handling code here:
-        String whatsubj = (String)subjects.getSelectedItem();
-        
+//        String whatsubj = (String)subjects.getSelectedItem();
+//        
+//        try {
+//            
+//            Assessment assessObj = new Assessment();    //made object of assessment.java
+//            String subname = assessObj.Subject;
+//            if(whatsubj.equals(subname)){
+//            String [] populateAssess = {assessObj.Subject, assessObj.AssessmentID, assessObj.AsssessmentType, assessObj.topic, assessObj.format, assessObj.dueDate};
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+        assessments.removeAllItems();
+            CSVReader reader = null;
         try {
-            
-            Assessment assessObj = new Assessment();    //made object of assessment.java
-            String subname = assessObj.Subject;
-            if(whatsubj.equals(subname)){
-            String [] populateAssess = {assessObj.Subject, assessObj.AssessmentID, assessObj.AsssessmentType, assessObj.topic, assessObj.format, assessObj.dueDate};
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+            reader = new CSVReader(new FileReader("data.csv"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String [] nextLine;
+        try {
+        while ((nextLine = reader.readNext()) != null) {    //reads till the end of the file
+            String whatsub = (String)subjects.getSelectedItem();
+            if(whatsub.equals(nextLine[0])){    //checks which subject we want to get assessment of
+                
+                String sub = whatsub;
+                switch(sub){
+                case "English":
+                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
+                    break;
+                case "Maths B":
+                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
+                    break;
+                case "Religion and Ethics":
+                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);   
+                    break;
+                case "Biology":
+                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
+                    break;
+                case "Business and Communication Technologies":
+                    assessments.addItem(nextLine[1] + "," + nextLine[2] + "," + nextLine[3] + "," + nextLine[4] + "," + nextLine[5]);
+                    break;
+                default:
+                    System.out.println("nothing found");
+                    break;
+                }
+            } 
+        }
+        } catch (IOException ex) {
+            Logger.getLogger(StudyMonitorInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_loadActionPerformed
 
