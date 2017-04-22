@@ -342,7 +342,7 @@ layout.setHorizontalGroup(
         name.setText("");       // Sets the Student Name as blank
         year.setText("");       // Sets the Year Level as blank
         subjects.setSelectedIndex(0);       //Sets the Dropdown to original state
-        assessments.setSelectedIndex(0);    //Sets the Dropdown to original state
+        assessments.removeAllItems();    //Sets the Dropdown to original state
         achivements.setSelectedIndex(0);    //Sets the Dropdown to original state
         txtarea.setText("");    // Sets the Student Performance textarea blank
     }//GEN-LAST:event_clearActionPerformed
